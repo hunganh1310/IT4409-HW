@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>IT4409 - Web Technologies and Services</title>
+    <meta name="description" content="Landing page for course IT4409 - Web Technologies and Services, semester 20251, HUST." />
+    <style>
+    :root{
+        --bg:#f8fafc;
+        --primary:#c62828;
+        --secondary:#37474f;
+        --muted:#607d8b;
+        --radius:12px;
+        --maxw:1000px;
+        --ff: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--ff);background:var(--bg);color:var(--secondary);line-height:1.5;padding:16px;display:flex;justify-content:center}
+    .wrap{width:100%;max-width:var(--maxw)}
+
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{font-size:1.3rem;font-weight:700;color:var(--primary)}
+    nav{display:flex;gap:16px}
+    nav a{text-decoration:none;color:var(--secondary);font-weight:500}
+    nav a:hover{color:var(--primary)}
+
+    .hero{background:#fff;padding:32px;border-radius:var(--radius);box-shadow:0 2px 6px rgba(0,0,0,0.08);margin-bottom:24px}
+    .hero h1{font-size:clamp(1.8rem,4vw,2.4rem);color:var(--primary)}
+    .hero p{margin-top:12px;color:var(--muted)}
+
+    .section{margin-bottom:32px}
+    .section h2{margin-bottom:12px;color:var(--primary)}
+    .card{background:#fff;padding:18px;border-radius:var(--radius);box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+    footer{text-align:center;font-size:0.9rem;color:var(--muted);margin-top:24px}
+
+    @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}nav{display:none}}
+    @media(max-width:500px){.grid{grid-template-columns:1fr}body{padding:10px}}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+    <header>
+        <div class="brand">IT4409 - HUST</div>
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#syllabus">Syllabus</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Web Technologies and Services (IT4409)</h1>
+        <p>Semester 20251, Hanoi University of Science and Technology. This course introduces modern web technologies, web programming, and services to equip students with both theoretical foundations and practical skills.</p>
+    </section>
+
+    <section id="overview" class="section">
+        <h2>Course Overview</h2>
+        <div class="card">
+            <p>This course covers the fundamentals of web technologies including HTML, CSS, JavaScript, server-side programming, REST APIs, and cloud services. Students will practice building responsive, secure, and scalable web applications.</p>
+        </div>
+    </section>
+
+    <section id="syllabus" class="section">
+        <h2>Syllabus Highlights</h2>
+        <div class="grid">
+        <div class="card">
+          <h3>Week 1-3</h3>
+          <p>Introduction to HTML, CSS, Responsive Web Design.</p>
+        </div>
+        <div class="card">
+          <h3>Week 4-6</h3>
+          <p>JavaScript, DOM, and client-side programming.</p>
+        </div>
+        <div class="card">
+          <h3>Week 7-9</h3>
+          <p>Server-side programming, databases, authentication.</p>
+        </div>
+        <div class="card">
+          <h3>Week 10-12</h3>
+          <p>RESTful services, APIs, cloud deployment.</p>
+        </div>
+        <div class="card">
+          <h3>Week 13-14</h3>
+          <p>Web security, optimization, and scalability.</p>
+        </div>
+        <div class="card">
+          <h3>Week 15</h3>
+          <p>Project presentations and final assessment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Course Instructor: Dr. Nguyen Van A</p>
+        <p>Email: <a href="mailto:nguyenvana@hust.edu.vn">nguyenvana@hust.edu.vn</a></p>
+        <p>Office: Room 401, School of Information and Communication Technology, HUST</p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> HUST - IT4409 Web Technologies and Services
+    </footer>
+  </div>
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+[
+    { "cid": "SSH1141", "name": "Lịch sử Đảng cộng sản Việt Nam", "credits": 2 },
+    { "cid": "IT4651", "name": "Thiết kế và triển khai mạng IP", "credits": 3 },
+    { "cid": "IT4060", "name": "Lập trình mạng", "credits": 2 },
+    { "cid": "IT4015", "name": "Nhập môn an toàn thông tin", "credits": 3 },
+    { "cid": "IT3421", "name": "Điện tử cho CNTT", "credits": 2 },
+    { "cid": "IT3170", "name": "Thuật toán ứng dụng", "credits": 2 },
+    { "cid": "IT3120", "name": "Phân tích và thiết kế hệ thống", "credits": 2 },
+    { "cid": "IT3070", "name": "Nguyên lý hệ điều hành", "credits": 3 },
+    { "cid": "IT2030", "name": "Technical Writing and Presentation", "credits": 3 },
+
+    { "cid": "IT4785", "name": "Phát triển ứng dụng cho thiết bị di động", "credits": 2 },
+    { "cid": "IT4593", "name": "Nhập môn kỹ thuật truyền thông", "credits": 2 },
+    { "cid": "IT4172", "name": "Xử lý tín hiệu", "credits": 2 },
+    { "cid": "IT3180", "name": "Nhập môn công nghệ phần mềm", "credits": 3 },
+    { "cid": "IT3150", "name": "Project I", "credits": 2 },
+    { "cid": "IT3090", "name": "Cơ sở dữ liệu", "credits": 3 },
+    { "cid": "IT3080", "name": "Mạng máy tính", "credits": 3 },
+    { "cid": "IT3040", "name": "Kỹ thuật lập trình", "credits": 2 },
+    { "cid": "IT3020", "name": "Toán rời rạc", "credits": 3 },
+    { "cid": "FL1132", "name": "Tiếng Anh cơ sở 2", "credits": 0 },
+    { "cid": "FL1131", "name": "Tiếng Anh cơ sở 1", "credits": 0 }
+]

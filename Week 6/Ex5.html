@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getUser() {
+            console.log("Bước 1. Gọi getUser()");
+            return new Promise((resolve) => {
+            setTimeout(() => {
+            const user = { id: 1, name: "Lam" };
+            console.log("User: " + user.name);
+            resolve(user);
+            }, 400);
+            });
+            }
+
+        function getPosts(userId) {
+            console.log("Bước 2. Gọi getPosts(" + userId + ")");
+            return new Promise((resolve) => {
+            setTimeout(() => {
+            const posts = [
+                { id: 101, title: "Post A" },
+                { id: 102, title: "Post B" },
+            ];
+            console.log("Posts: " + posts.map((p) => p.title).join(", "));
+            resolve(posts);
+            }, 400);
+            });
+            }
+
+        function getPostDetail(postId) {
+            console.log("Bước 3. Gọi getPostDetail(" + postId + ")");
+            return new Promise((resolve) => {
+            setTimeout(() => {
+            const detail = { id: postId, title: "Chi tiết bài viết " + postId };
+            console.log("Detail: " + detail.title);
+            resolve(detail);
+            }, 400);
+            });
+            }
+
+        getUser()
+            .then((user) => {
+            return getPosts(user.id);
+            })
+            .then((posts) => {
+            return getPostDetail(posts[0].id);
+            })
+            .then((detail) => {
+            console.log("✅ Hoàn thành! Dữ liệu cuối cùng: " + detail.title);
+            })
+            .catch((error) => {
+            console.log("❌ Đã xảy ra lỗi: " + error);
+            });
+
+    </script>
+</body>
+</html>

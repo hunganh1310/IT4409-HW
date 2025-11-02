@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu điểm</title>
+</head>
+<body>
+
+    <h1>Tra cứu kết quả học tập</h1>
+    
+    <label for="studentIdInput">Nhập mã số sinh viên:</label>
+    <input type="text" id="studentIdInput" placeholder="Ví dụ: 20225164">
+    <button id="searchButton">Tra cứu</button>
+
+    <hr>
+
+    <h2>Kết quả</h2>
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Mã học phần</th>
+                <th>Tên học phần</th>
+                <th>Số tín chỉ</th>
+                <th>Học kỳ</th>
+                <th>Điểm số</th>
+                <th>Điểm chữ quy đổi</th>
+            </tr>
+        </thead>
+        <tbody id="resultsBody">
+        </tbody>
+    </table>
+
+    <script>
+        const sinhvien = [
+            { sid: '20225164', name: 'Nguyen Van A', dob: '2004-01-01' },
+            { sid: '20225165', name: 'Tran Thi B', dob: '2004-02-15' },
+            { sid: '20225166', name: 'Le Van C', dob: '2004-05-20' }
+        ];
+
+        const hocphan = [
+            { cid: 'SSH1141', name: 'Lịch sử Đảng cộng sản Việt Nam', credits: 2 },
+            { cid: 'IT4651', name: 'Thiết kế và triển khai mạng IP', credits: 3 },
+            { cid: 'IT4060', name: 'Lập trình mạng', credits: 2 },
+            { cid: 'IT4015', name: 'Nhập môn an toàn thông tin', credits: 3 },
+            { cid: 'IT3421', name: 'Điện tử cho CNTT', credits: 2 },
+            { cid: 'IT3170', name: 'Thuật toán ứng dụng', credits: 2 },
+            { cid: 'IT3120', name: 'Phân tích và thiết kế hệ thống', credits: 2 },
+            { cid: 'IT3070', name: 'Nguyên lý hệ điều hành', credits: 3 },
+            { cid: 'IT2030', name: 'Technical Writing and Presentation', credits: 3 },
+            
+            { cid: 'IT4785', name: 'Phát triển ứng dụng cho thiết bị di động', credits: 2 },
+            { cid: 'IT4593', name: 'Nhập môn kỹ thuật truyền thông', credits: 2 },
+            { cid: 'IT4172', name: 'Xử lý tín hiệu', credits: 2 },
+            { cid: 'IT3180', name: 'Nhập môn công nghệ phần mềm', credits: 3 },
+            { cid: 'IT3150', name: 'Project I', credits: 2 },
+            { cid: 'IT3090', name: 'Cơ sở dữ liệu', credits: 3 },
+            { cid: 'IT3080', name: 'Mạng máy tính', credits: 3 },
+            { cid: 'IT3040', name: 'Kỹ thuật lập trình', credits: 2 },
+            { cid: 'IT3020', name: 'Toán rời rạc', credits: 3 },
+            { cid: 'FL1132', name: 'Tiếng Anh cơ sở 2', credits: 0 },
+            { cid: 'FL1131', name: 'Tiếng Anh cơ sở 1', credits: 0 }
+        ];
+
+        const convertGradeToScore = (grade) => {
+            const gradeMap = {
+                'A+': 9.5, 'A': 8.7, 'B+': 8.2, 'B': 7.5,
+                'C+': 6.5, 'C': 5.5, 'D': 4.5, 'F': 3.0, 'R': 10.0
+            };
+            return gradeMap[grade] !== undefined ? gradeMap[grade] : 0.0;
+        };
+
+        const convertScoreToGrade = (score) => {
+            if (score >= 9.0) return 'A+';
+            if (score >= 8.5) return 'A';
+            if (score >= 8.0) return 'B+';
+            if (score >= 7.0) return 'B';
+            if (score >= 6.0) return 'C+';
+            if (score >= 5.0) return 'C';
+            if (score >= 4.0) return 'D';
+            if (score > 0) return 'F';
+            if (score === 0) return 'R';
+            return 'F';
+        };
+
+        const ketqua = [
+            { sid: '20225164', cid: 'SSH1141', term: '2024.2', score: convertGradeToScore('A') },
+            { sid: '20225164', cid: 'IT4651', term: '2024.2', score: convertGradeToScore('A+') },
+            { sid: '20225164', cid: 'IT4060', term: '2024.2', score: convertGradeToScore('A') },
+            { sid: '20225164', cid: 'IT4015', term: '2024.2', score: convertGradeToScore('B+') },
+            { sid: '20225164', cid: 'IT3070', term: '2024.2', score: convertGradeToScore('A') },
+            { sid: '20225164', cid: 'IT4785', term: '2024.1', score: convertGradeToScore('C') },
+            { sid: '20225164', cid: 'IT3080', term: '2024.1', score: convertGradeToScore('A+') },
+            { sid: '20225164', cid: 'IT3040', term: '2024.1', score: convertGradeToScore('B') },
+
+            { sid: '20225165', cid: 'IT3421', term: '2024.2', score: convertGradeToScore('A') },
+            { sid: '20225165', cid: 'IT3170', term: '2024.2', score: convertGradeToScore('D') },
+            { sid: '20225165', cid: 'IT3120', term: '2024.2', score: convertGradeToScore('A') },
+            { sid: '20225165', cid: 'IT4593', term: '2024.1', score: convertGradeToScore('F') },
+            { sid: '20225165', cid: 'IT4172', term: '2024.1', score: convertGradeToScore('A') },
+            { sid: '20225165', cid: 'IT3180', term: '2024.1', score: convertGradeToScore('C') },
+            { sid: '20225165', cid: 'FL1131', term: '2024.1', score: convertGradeToScore('R') },
+
+            { sid: '20225166', cid: 'IT2030', term: '2024.2', score: convertGradeToScore('A') },
+            { sid: '20225166', cid: 'IT3150', term: '2024.1', score: convertGradeToScore('A+') },
+            { sid: '20225166', cid: 'IT3090', term: '2024.1', score: convertGradeToScore('C') },
+            { sid: '20225166', cid: 'IT3020', term: '2024.1', score: convertGradeToScore('C+') },
+            { sid: '20225166', cid: 'FL1132', term: '2024.1', score: convertGradeToScore('R') }
+        ];
+
+
+        const findStudent = (sid) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const student = sinhvien.find(sv => sv.sid === sid);
+                    if (student) {
+                    resolve(student);
+                    } else {
+                    reject(new Error('Không tìm thấy sinh viên.'));
+                    }
+                }, 500);
+            });
+        };
+
+        const getFullStudentResults = (sid) => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const studentResults = ketqua.filter(kq => kq.sid === sid);
+                    
+                    const enrichedResults = studentResults.map(result => {
+                    const course = hocphan.find(hp => hp.cid === result.cid);
+                    return {
+                        ...result,
+                        courseName: course ? course.name : 'Không rõ',
+                        credits: course ? course.credits : 'N/A'
+                    };
+                    });
+
+                    resolve(enrichedResults);
+                }, 1000);
+            });
+        };
+
+        const studentIdInput = document.getElementById('studentIdInput');
+        const searchButton = document.getElementById('searchButton');
+        const resultsBody = document.getElementById('resultsBody');
+
+
+        const renderResults = (results) => {
+            if (!results || results.length === 0) {
+                resultsBody.innerHTML = '<tr><td colspan="6">Không có dữ liệu điểm cho sinh viên này.</td></tr>';
+                return;
+            }
+
+            resultsBody.innerHTML = results.map(result => `
+                <tr>
+                    <td>${result.cid}</td>
+                    <td>${result.courseName}</td>
+                    <td>${result.credits}</td>
+                    <td>${result.term}</td>
+                    <td>${result.score.toFixed(1)}</td>
+                    <td>${convertScoreToGrade(result.score)}</td>
+                </tr>
+            `).join('');
+        };
+
+        const handleSearch = async () => {
+            const studentId = studentIdInput.value.trim();
+            if (!studentId) {
+                alert('Vui lòng nhập mã số sinh viên.');
+                return;
+            }
+
+            resultsBody.innerHTML = '<tr><td colspan="6">Đang tải...</td></tr>';
+
+            try {
+                const cacheKey = `student_results_${studentId}`;
+                const cachedResults = localStorage.getItem(cacheKey);
+
+                if (cachedResults) {
+                    console.log("Loading from cache...");
+                    const results = JSON.parse(cachedResults);
+                    renderResults(results);
+                    return;
+                }
+
+                console.log("Fetching from source...");
+                const [student, results] = await Promise.all([
+                    findStudent(studentId),
+                    getFullStudentResults(studentId)
+                ]);
+
+                localStorage.setItem(cacheKey, JSON.stringify(results));
+
+                renderResults(results);
+
+            } catch (error) {
+                resultsBody.innerHTML = `<tr><td colspan="6">Lỗi: ${error.message}</td></tr>`;
+            }
+        };
+
+        searchButton.addEventListener('click', handleSearch);
+
+    </script>
+</body>
+</html>

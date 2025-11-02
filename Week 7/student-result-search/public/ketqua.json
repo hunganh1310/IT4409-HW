@@ -1,0 +1,24 @@
+[
+    {"studentId": "20225164", "courseId": "SSH1141", "term": "2024.2", "grade": "A"},
+    {"studentId": "20225164", "courseId": "IT4651", "term": "2024.2", "grade": "A+"},
+    {"studentId": "20225164", "courseId": "IT4060", "term": "2024.2", "grade": "A"},
+    {"studentId": "20225164", "courseId": "IT4015", "term": "2024.2", "grade": "B+"},
+    {"studentId": "20225164", "courseId": "IT3070", "term": "2024.2", "grade": "A"},
+    {"studentId": "20225164", "courseId": "IT4785", "term": "2024.1", "grade": "C"},
+    {"studentId": "20225164", "courseId": "IT3080", "term": "2024.1", "grade": "A+"},
+    {"studentId": "20225164", "courseId": "IT3040", "term": "2024.1", "grade": "B"},
+
+    {"studentId": "20225165", "courseId": "IT3421", "term": "2024.2", "grade": "A"},
+    {"studentId": "20225165", "courseId": "IT3170", "term": "2024.2", "grade": "D"},
+    {"studentId": "20225165", "courseId": "IT3120", "term": "2024.2", "grade": "A"},
+    {"studentId": "20225165", "courseId": "IT4593", "term": "2024.1", "grade": "F"},
+    {"studentId": "20225165", "courseId": "IT4172", "term": "2024.1", "grade": "A"},
+    {"studentId": "20225165", "courseId": "IT3180", "term": "2024.1", "grade": "C"},
+    {"studentId": "20225165", "courseId": "FL1131", "term": "2024.1", "grade": "R"},
+
+    {"studentId": "20225166", "courseId": "IT2030", "term": "2024.2", "grade": "A"},
+    {"studentId": "20225166", "courseId": "IT3150", "term": "2024.1", "grade": "A+"},
+    {"studentId": "20225166", "courseId": "IT3090", "term": "2024.1", "grade": "C"},
+    {"studentId": "20225166", "courseId": "IT3020", "term": "2024.1", "grade": "C+"},
+    {"studentId": "20225166", "courseId": "FL1132", "term": "2024.1", "grade": "R"}
+]
