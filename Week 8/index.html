@@ -8,7 +8,6 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-      /* Modal Overlay */
       .modal-overlay {
         position: fixed;
         top: 0;
@@ -21,28 +20,50 @@
         align-items: center;
         z-index: 999;
       }
-      /* Modal Content */
       .modal-content {
         background: #fff;
-        padding: 6px;
+        padding: 12px;
         border-radius: 6px;
-        width: 300px;
+        width: 320px;
+        box-sizing: border-box;
       }
 
-      #root { 
-        max-width: 1200px; 
-        margin: 0 auto; 
-        background: white; 
-        border-radius: 12px; 
-        padding: 30px; 
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); 
-      } 
- 
-      .modal-content input { 
-        width: 100%; 
-        margin: 5px 0; 
-        padding: 6px; 
-        box-sizing: border-box; 
+      #root {
+        max-width: 1200px;
+        margin: 30px auto;
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      input, textarea, select {
+        width: 80%;
+        margin: 6px 0;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+
+      button, .btn {
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #2b6cb0;
+        background: #3182ce;
+        color: #fff;
+        cursor: pointer;
+        margin: 6px 4px;
+        font-weight: 600;
+      }
+
+      button.secondary {
+        background: #e2e8f0;
+        color: #111827;
+        border-color: #cbd5e1;
+      }
+
+      .modal-content input {
+        width: 100%;
       }
     </style>
   </head>

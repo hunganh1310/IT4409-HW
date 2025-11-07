@@ -1,0 +1,23 @@
+
+
+max-width: 1200px;
+   - Giới hạn chiều rộng tối đa của phần tử là 1200px
+   - Ngăn nội dung bị kéo dài quá rộng trên màn hình lớn
+   - Giúp dễ đọc và trải nghiệm người dùng tốt hơn
+
+margin: 0 auto;
+   - Chia đều khoảng trống hai bên, đẩy phần tử ra giữa
+   - Chỉ hoạt động khi phần tử có width hoặc max-width xác định
+
+text-align: center;
+   - Căn giữa văn bản và các phần tử inline bên trong
+   - Áp dụng cho text, images, buttons (nếu là inline/inline-block)
+
+
+Button
+
+Giải thích:
+- background: #3182ce - Màu xanh dương chủ đạo
+- border: #2b6cb0 - Màu viền xanh đậm hơn một chút
+- color: #fff - Màu chữ trắng để tạo độ tương phản
+
