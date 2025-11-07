@@ -28,6 +28,22 @@
         border-radius: 6px;
         width: 300px;
       }
+
+      #root { 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        background: white; 
+        border-radius: 12px; 
+        padding: 30px; 
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); 
+      } 
+ 
+      .modal-content input { 
+        width: 100%; 
+        margin: 5px 0; 
+        padding: 6px; 
+        box-sizing: border-box; 
+      }
     </style>
   </head>
   <body>
@@ -98,8 +114,8 @@
           }
         }
 
-        function removeUser(id) { 
-          setUsers((prev) => prev.filter((u) => u.id != id)); 
+        function removeUser(id) {
+          setUsers((prev) => prev.filter((u) => u.id != id));
         }
 
         return (
@@ -132,49 +148,33 @@
               </tbody>
             </table>
             {editing && (
-              <div style={{ border: '1px solid #ccc', padding: 12, marginTop: 8 }}>
-                <h4>Sửa người dùng</h4>
-                <div>
+              <div class="modal-overlay">
+                <div class="modal-content">
+                  <h4>Sửa người dùng</h4>
                   <label htmlFor="name">Name: </label>
                   <input id="name" type="text" value={editing.name} 
-                    onChange={(e) => handleEditChange("name", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("name", e.target.value)} /><br/>
                   <label htmlFor="username">Username: </label>
                   <input id="username" type="text" value={editing.username} 
-                    onChange={(e) => handleEditChange("username", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("username", e.target.value)} /><br/>
                   <label htmlFor="email">Email: </label>
                   <input id="email" type="text" value={editing.email} 
-                    onChange={(e) => handleEditChange("email", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("email", e.target.value)} /><br/>
                   <label htmlFor="street">Street: </label>
                   <input id="street" type="text" value={editing.address.street} 
-                    onChange={(e) => handleEditChange("street", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("street", e.target.value)} /><br/>
                   <label htmlFor="suite">Suite: </label>
                   <input id="suite" type="text" value={editing.address.suite} 
-                    onChange={(e) => handleEditChange("suite", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("suite", e.target.value)} /><br/>
                   <label htmlFor="city">City: </label>
                   <input id="city" type="text" value={editing.address.city} 
-                    onChange={(e) => handleEditChange("city", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("city", e.target.value)} /><br/>
                   <label htmlFor="phone">Phone: </label>
                   <input id="phone" type="text" value={editing.phone} 
-                    onChange={(e) => handleEditChange("phone", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("phone", e.target.value)} /><br/>
                   <label htmlFor="website">Website: </label>
                   <input id="website" type="text" value={editing.website} 
-                    onChange={(e) => handleEditChange("website", e.target.value)} />
-                </div>
-                <div>
+                    onChange={(e) => handleEditChange("website", e.target.value)} /><br/>
                   <button onClick={saveUser}>Lưu</button>
                   <button onClick={() => setEditing(null)}>Hủy</button>
                 </div>
@@ -216,42 +216,26 @@
           <div>
             <button onClick={() => setAdding(true)}>Thêm</button>
             {adding && (
-              <div style={{ border: '1px solid #ccc', padding: 12, marginTop: 8 }}>
-                <h4>Thêm người dùng</h4>
-                <div>
+              <div class="modal-overlay">
+                <div class="modal-content">
+                  <h4>Thêm người dùng</h4>
                   <label htmlFor="name">Name: </label>
-                  <input id="name" type="text" value={user.name} onChange={handleChange} />
-                </div>
-                <div>
+                  <input id="name" type="text" value={user.name} onChange={handleChange} /><br/>
                   <label htmlFor="username">Username: </label>
-                  <input id="username" type="text" value={user.username} onChange={handleChange} />
-                </div>
-                <div>
+                  <input id="username" type="text" value={user.username} onChange={handleChange} /><br/>
                   <label htmlFor="email">Email: </label>
-                  <input id="email" type="text" value={user.email} onChange={handleChange} />
-                </div>
-                <div>
+                  <input id="email" type="text" value={user.email} onChange={handleChange} /><br/>
                   <label htmlFor="street">Street: </label>
-                  <input id="street" type="text" value={user.address.street} onChange={handleChange} />
-                </div>
-                <div>
+                  <input id="street" type="text" value={user.address.street} onChange={handleChange} /><br/>
                   <label htmlFor="suite">Suite: </label>
-                  <input id="suite" type="text" value={user.address.suite} onChange={handleChange} />
-                </div>
-                <div>
+                  <input id="suite" type="text" value={user.address.suite} onChange={handleChange} /><br/>
                   <label htmlFor="city">City: </label>
-                  <input id="city" type="text" value={user.address.city} onChange={handleChange} />
-                </div>
-                <div>
+                  <input id="city" type="text" value={user.address.city} onChange={handleChange} /><br/>
                   <label htmlFor="phone">Phone: </label>
-                  <input id="phone" type="text" value={user.phone} onChange={handleChange} />
-                </div>
-                <div>
+                  <input id="phone" type="text" value={user.phone} onChange={handleChange} /><br/>
                   <label htmlFor="website">Website: </label>
                   <input id="website" type="text" value={user.website} onChange={handleChange} />
-                </div>
-                <div>
-                  <button onClick={handleAdd}>Lưu</button>
+                  <button onClick={handleAdd}>Lưu</button><br/>
                   <button onClick={() => setAdding(false)}>Hủy</button>
                 </div>
               </div>
