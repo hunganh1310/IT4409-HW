@@ -1,0 +1,12 @@
+[
+  { "name": "Nguyễn Văn A", "age": 28, "email": "nguyenvana@example.com", "address": "Hà Nội" },
+  { "name": "Trần Thị B", "age": 22, "email": "tranthib@example.com", "address": "Hải Phòng" },
+  { "name": "Lê Văn C", "age": 35, "email": "levanc@example.com", "address": "Đà Nẵng" },
+  { "name": "Phạm Thị D", "age": 30, "email": "phamthid@example.com", "address": "Hồ Chí Minh" },
+  { "name": "Hoàng Văn E", "age": 41, "email": "hoangvane@example.com", "address": "Cần Thơ" },
+  { "name": "Đỗ Thị F", "age": 19, "email": "dothif@example.com", "address": "Nha Trang" },
+  { "name": "Vũ Văn G", "age": 27, "email": "vuvang@example.com", "address": "Huế" },
+  { "name": "Bùi Thị H", "age": 33, "email": "buithih@example.com", "address": "Vũng Tàu" },
+  { "name": "Phan Văn I", "age": 45, "email": "phanvani@example.com", "address": "Quảng Ninh" },
+  { "name": "Ngô Thị K", "age": 26, "email": "ngothik@example.com", "address": "Buôn Ma Thuột" }
+]

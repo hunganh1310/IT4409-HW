@@ -1,0 +1,18 @@
+Giải thích thực hiện 2 yêu cầu bổ sung
+
+1. Create: đảm bảo `email` là duy nhất
+
+- Xử lý ở endpoint `POST /api/users`:
+  1. Nhận `email` từ body, chuẩn hoá bằng `String(email).toLowerCase().trim()` trước khi dùng.
+  2. Kiểm tra tồn tại trước khi tạo: dùng `await User.findOne({ email: emailNorm })` để trả về lỗi nếu email đã có trong DB (trả 400 với thông báo "Email đã tồn tại").
+
+2. Get: chạy `find` và `countDocuments` song song bằng `Promise.all`
+
+  ```js
+  const [users, total] = await Promise.all([
+    User.find(filter).skip(skip).limit(limit),
+    User.countDocuments(filter)
+  ]);
+  const totalPages = Math.ceil(total / limit);
+  ```
+  Điều này cho phép hai truy vấn chạy song song trên MongoDB (driver sẽ gửi 2 truy vấn), giảm tổng độ trễ khi cả hai cần thực hiện.
