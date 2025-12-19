@@ -1,18 +1,71 @@
-Giải thích thực hiện 2 yêu cầu bổ sung
+Giải thích thực hiện yêu cầu bổ sung
 
-1. Create: đảm bảo `email` là duy nhất
+(i) Create: đảm bảo `email` là duy nhất
 
 - Xử lý ở endpoint `POST /api/users`:
-  1. Nhận `email` từ body, chuẩn hoá bằng `String(email).toLowerCase().trim()` trước khi dùng.
-  2. Kiểm tra tồn tại trước khi tạo: dùng `await User.findOne({ email: emailNorm })` để trả về lỗi nếu email đã có trong DB (trả 400 với thông báo "Email đã tồn tại").
+  + Nhận `email` từ body, chuẩn hoá bằng `String(email).toLowerCase().trim()` trước khi dùng.
+  + Kiểm tra tồn tại trước khi tạo: dùng `await User.findOne({ email: emailNorm })` để trả về lỗi nếu email đã có trong DB (trả 400 với thông báo "Email đã tồn tại").
 
-2. Get: chạy `find` và `countDocuments` song song bằng `Promise.all`
+(ii) STT TĂNG DẦN THEO TOÀN BỘ CÁC TRANG
 
-  ```js
-  const [users, total] = await Promise.all([
-    User.find(filter).skip(skip).limit(limit),
-    User.countDocuments(filter)
-  ]);
-  const totalPages = Math.ceil(total / limit);
-  ```
-  Điều này cho phép hai truy vấn chạy song song trên MongoDB (driver sẽ gửi 2 truy vấn), giảm tổng độ trễ khi cả hai cần thực hiện.
+<td>{index + 1}</td> -> <td>{(page - 1) * limit + index + 1}</td>
+
+- page: trang hiện tại (1, 2, 3,...)
+- limit: số dòng/trang (3, 5, 10)
+- index: vị trí trong mảng users (0, 1, 2,...)
+- (page - 1) * limit: tính số dòng của các trang trước
+- + index + 1: cộng thêm vị trí hiện tại và +1 vì index bắt đầu từ 0
+
+(iii) PAGE CHUYỂN VỀ 1 KHI THAY ĐỔI LIMIT
+
+TRƯỚC:
+<Pagination
+    ...
+    onLimitChange={setLimit}
+/>
+
+SAU:
+<Pagination
+    ...
+    onLimitChange={(newLimit) => {
+        setPage(1);
+        setLimit(newLimit);
+    }}
+/>
+
+- Thay vì chỉ gọi setLimit(newLimit)
+- Tạo hàm mới nhận tham số newLimit
+- Gọi setPage(1) trước để reset về trang 1
+- Sau đó mới gọi setLimit(newLimit) để cập nhật limit
+
+
+(iii) KIỂM TRA DỮ LIỆU ĐẦU VÀO
+
+Thêm code chuẩn hóa:
+const trimmedData = {
+    ...formData,
+    name: formData.name.trim(),
+    email: formData.email.trim(),
+    address: formData.address.trim(),
+};
+
+// Sau đó gửi trimmedData thay vì formData
+body: JSON.stringify(trimmedData),
+
+Validation trước khi submit:
+- Function validate() kiểm tra:
+  + Tên: phải có ít nhất 2 ký tự (sau khi trim)
+  + Tuổi: phải >= 0
+  + Email: phải có @ và dấu chấm
+- Chỉ submit nếu validate() trả về true
+
+
+(iv) BỔ SUNG CÁC THÔNG BÁO LỖI CHI TIẾT
+
+Thêm kiểm tra HTTP status:
+.then((res) => {
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+    }
+    return res.json();
+})
